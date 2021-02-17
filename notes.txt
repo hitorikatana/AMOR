@@ -1,0 +1,24 @@
+31/01/2021
+
+target {controller} not found
+ini karena beda versi laravel. versi baru harus menambahkan ini:
+    protected $namespace = 'App\\Http\\Controllers';
+
+sebelum ini:
+    public function boot()
+
+di file /Providers/RouteServiceProvider.php   
+
+04/02/2021
+kalau mau check apakah session masih ada di route (jadi nggak perlu check setiap file). Cara bikinnya disini:
+https://laracasts.com/discuss/channels/laravel/middleware-to-check-if-session-exists <-- jgn lupa daftarin middelware di kernel.php
+
+https://www.codepolitan.com/protect-menggunakan-middleware-laravel-59fab97ba55e8
+
+9/02/2021
+Syntax error or access violation: 1055 Error
+
+In config\database.php --> "mysql" array
+
+Set 'strict' => false to disable all.
+
