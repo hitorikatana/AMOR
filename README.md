@@ -1,4 +1,5 @@
 <h3>This is AMOR Application - A Force Field Monitoring Software. Created By Ibnu Rizal (Server, Database, Backend) and Taufan (Android Apps, API)</h3>
+<h5>Backend was built by using Laravel 8.25</h5>
   
   
   
