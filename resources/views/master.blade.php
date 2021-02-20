@@ -74,7 +74,8 @@
                     <div id="sidebar-menu" class="slimscroll-menu">
                         <ul class="metismenu" id="menu-bar">
                             <li class="menu-title">Navigation</li>
-                            @foreach($menu1 as $m)
+                            //@foreach(Session::get('menu') as $m)
+
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="{{ $m->nav_header_icon}}"></i>
@@ -83,14 +84,14 @@
                                 </a>
 
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    @foreach($menu2 as $m2)
+                               // @foreach(Session::get('submenu') as $submenu)
                                     <li>
-                                        <a href="{{ $m2->nav_menu_url }}">&nbsp;{{ $m2->nav_menu_name }}</a>
+                                        <a href="{{ $submenu->nav_menu_url }}">&nbsp;{{ $submenu->nav_header_name }}</a>
                                     </li>
-                                    @endforeach    
+                                   // @endforeach    
                                 </ul>
                             </li>
-                            @endforeach
+                            //@endforeach
                             <li><a href="logout">Logout</a></li>  
                         </ul>
                     </div>
@@ -112,6 +113,27 @@
                 </div>
             </div>
             <!-- End Preloader-->
+
+           <div id="container" style="margin-left:300px"> 
+                    @foreach(Session::get('menu') as $m)
+                    {{ $m->nav_name }}<br/>
+                        @if($m->ada == 1)
+                        ->{{ $m->nav_name }}<br/>
+                        @endif
+                    @endforeach
+                    
+                    
+                    ayam
+                    <ul>
+    @foreach($items as $item)
+        <li>a {{ $item->nav_name }}
+            @foreach($item['children'] as $child)
+            <li> b {{ $child->nav_name }}</li>
+            @endforeach
+        </li>
+    @endforeach
+</ul>
+                    </div>
 
             @yield('content')
 
