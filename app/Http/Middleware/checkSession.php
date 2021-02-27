@@ -5,11 +5,11 @@ use Closure;
 use Session;
 
 
-class checkSession 
+class checkSession
 {
     public function handle($request, Closure $next)
     {
-        if (!$request->session()->exists('user')) {
+        if (!$request->session()->exists('LOGIN')) {
             // user value cannot be found in session
             return redirect('/');
         }

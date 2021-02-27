@@ -5,26 +5,26 @@
         <title>@yield('title')</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
-        <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="/css/app.min.css" rel="stylesheet" type="text/css" />
+        <link rel="shortcut icon" href="{{ asset('/images/favicon.ico') }}">
+        <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('/css/app.min.css') }}" rel="stylesheet" type="text/css" />
 
 
     </head>
 
     <body class="left-side-menu-dark">
-        <div id="wrapper">
+        <!--<div id="wrapper">-->
 
             <div class="navbar navbar-expand flex-column flex-md-row navbar-custom">
                 <div class="container-fluid">
 
-                    <a href="#" class="navbar-brand mr-0 mr-md-2 logo">
+                    <a href="{{ route('home') }}" class="navbar-brand mr-0 mr-md-2 logo">
                         <span class="logo-lg">
-                            <img src="/images/logo-blue.png" alt="" width="80" />
+                            <img src="{{ asset('/images/logo-blue.png') }}" alt="" width="80" />
                         </span>
                         <span class="logo-sm">
-                            <img src="/images/logo-blue.png" alt="" width="80">
+                            <img src="{{ asset('/images/logo-blue.png') }}" alt="" width="80">
                         </span>
                     </a>
 
@@ -38,7 +38,7 @@
                     </ul>
 
                     <ul class="navbar-nav flex-row ml-auto d-flex list-unstyled topnav-menu float-right mb-0">
-                        <li class="text-info"><?php echo 'company_name' ?></li>              
+                        <li class="text-info">{{ Session::get('full_name') }}</li>
                     </ul>
                 </div>
 
@@ -47,58 +47,33 @@
 
             <!-- ========== Left Sidebar Start ========== -->
             <div class="left-side-menu">
-                <div class="media user-profile mt-2 mb-2">
-                    <div class="media-body">
-                        <h6 class="pro-user-name mt-0 mb-0"><?php echo 'full_name' ?></h6>
-                        <span class="pro-user-desc"><?php echo 'username' ?></span>
-                    </div>
-                    <div class="dropdown align-self-center profile-dropdown-menu">
-                        <a class="dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
-                            aria-expanded="false">
-                            <span data-feather="chevron-down"></span>
-                        </a>
-                        <div class="dropdown-menu profile-dropdown">
-                            <a href="password" class="dropdown-item notify-item">
-                                <i data-feather="key" class="icon-dual icon-xs mr-2"></i>
-                                <span>Change Password</span>
-                            </a>
-                            <a href="logout" class="dropdown-item notify-item">
-                                <i data-feather="log-out" class="icon-dual icon-xs mr-2"></i>
-                                <span>Logout</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <br/>
                 <div class="sidebar-content">
-                    <!--- Sidemenu -->
                     <div id="sidebar-menu" class="slimscroll-menu">
                         <ul class="metismenu" id="menu-bar">
                             <li class="menu-title">Navigation</li>
-                            //@foreach(Session::get('menu') as $m)
-
+                            @foreach(Session::get('menu') as $m)
                             <li>
                                 <a href="javascript: void(0);">
-                                    <i class="{{ $m->nav_header_icon}}"></i>
-                                    <span> {{ $m->nav_header_name }} </span>
+                                    <i class="{{ $m->nav_icon}}"></i>
+                                    <span> {{ $m->nav_name }} </span>
                                     <span class="menu-arrow"></span>
                                 </a>
 
                                 <ul class="nav-second-level" aria-expanded="false">
-                               // @foreach(Session::get('submenu') as $submenu)
+                                    @foreach($m->children as $submenu)
                                     <li>
-                                        <a href="{{ $submenu->nav_menu_url }}">&nbsp;{{ $submenu->nav_header_name }}</a>
+                                        <a href="{{ route($submenu->nav_url) }}">&nbsp;{{ $submenu->nav_name }}</a>
                                     </li>
-                                   // @endforeach    
+                                    @endforeach
                                 </ul>
                             </li>
-                            //@endforeach
-                            <li><a href="logout">Logout</a></li>  
+                            @endforeach
+                            <li><a href="{{ route('logout') }}">Logout</a></li>
                         </ul>
                     </div>
-
                     <div class="clearfix"></div>
                 </div>
-
             </div>
             <!-- Left Sidebar End -->
 
@@ -114,29 +89,7 @@
             </div>
             <!-- End Preloader-->
 
-           <div id="container" style="margin-left:300px"> 
-                    @foreach(Session::get('menu') as $m)
-                    {{ $m->nav_name }}<br/>
-                        @if($m->ada == 1)
-                        ->{{ $m->nav_name }}<br/>
-                        @endif
-                    @endforeach
-                    
-                    
-                    ayam
-                    <ul>
-    @foreach($items as $item)
-        <li>a {{ $item->nav_name }}
-            @foreach($item['children'] as $child)
-            <li> b {{ $child->nav_name }}</li>
-            @endforeach
-        </li>
-    @endforeach
-</ul>
-                    </div>
-
             @yield('content')
-
             <footer class="footer">
                     <div class="container-fluid">
                         <div class="row">
@@ -147,10 +100,9 @@
                     </div>
                 </footer>
             </div>
-        </div>
+        <!--</div>-->
 
-        <div class="rightbar-overlay"></div>
-        <script src="/js/vendor.min.js"></script>
-        <script src="/js/app.min.js"></script>
+        <script src="{{ asset('/js/vendor.min.js') }}"></script>
+        <script src="{{ asset('/js/app.min.js') }}"></script>
     </body>
 </html>

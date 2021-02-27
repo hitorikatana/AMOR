@@ -1,14 +1,14 @@
 @extends('master')
 @section('title','Add New User')
 <div class="content-page">
-    <div class="content"> <!--container--> 
+    <div class="content"> <!--container-->
         <div class="container-fluid">
             <div class="row page-title">
                 <div class="col-md-12">
                     <h4 class="mb-1 mt-0">New User [<a href="javascript:history.back(-1)">List</a>]</h4>
                 </div>
             </div>
-            
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -27,6 +27,11 @@
                                 </ul>
                             </div>
                             @endif
+
+                            @if(Session::get('danger'))
+                                <div class="alert alert-danger" role="alert">{{ Session::get('danger') }}</div>
+                            @endif
+
 
                             <form action="add" method="POST">
                                 {{ csrf_field() }}
@@ -103,13 +108,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                         <label class="bmd-label-floating">Password</label>
-                                        <input type="password" class="form-control" name="txt_password" autocomplete="off" />
+                                        <input type="password" class="form-control" name="password" autocomplete="off" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                         <label class="bmd-label-floating">Confirm Password</label>
-                                        <input type="password" class="form-control" name="txt_password2" autocomplete="off" />
+                                        <input type="password" class="form-control" name="password_confirmation" autocomplete="off" />
                                         </div>
                                     </div>
                                     </div>
@@ -119,8 +124,8 @@
                                         <div class="form-group">
                                         <label class="bmd-label-floating">Module Access</label>
                                         <br/>
-                                        @foreach($nav_menu_id as $nav_menu_id)
-                                        <input type="checkbox" name="nav_menu_id[]" value="{{ $nav_menu_id -> nav_menu_id }}"><i class="dark-white"></i> {{  $nav_menu_id -> nav_header_name}} - {{ $nav_menu_id -> nav_menu_name }}<br/>
+                                        @foreach($nav_id as $nav_id)
+                                        <input type="checkbox" name="nav_id[]" value="{{ $nav_id -> nav_id }}" {{ old('nav_id') == $nav_id->nav_id ? 'checked' : '' }}><i class="dark-white"></i> {{ $nav_id -> nav_name }}<br/>
                                         @endforeach
                                         </div>
                                     </div>

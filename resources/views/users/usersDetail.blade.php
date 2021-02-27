@@ -1,22 +1,27 @@
 @extends('master')
 @section('title','User Detail')
 <div class="content-page">
-    <div class="content"> <!--container--> 
+    <div class="content"> <!--container-->
         <div class="container-fluid">
             <div class="row page-title">
                 <div class="col-md-12">
                     <h4 class="mb-1 mt-0">User Detail [<a href="javascript:history.back(-1)">List</a>]</h4>
                 </div>
             </div>
-            
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body"><!--content-->
 
-                            <div class="alert alert-info" role="alert">
-                                Password must have minimum 6 characters, consist of lowercase, uppercase and number
-                            </div>
+                            @if(count($errors)>0)
+                            @foreach($errors->all() as $error)
+                                <div class="alert alert-danger" role="alert">
+                                    {{ $error }}
+                                </div>
+                            @endforeach
+                            @endif
+
                             @foreach($user as $user)
                             <form action="/users/edit" method="POST">
                                 {{ csrf_field() }}
@@ -110,9 +115,12 @@
                                         <div class="form-group">
                                         <label class="bmd-label-floating">Module Access</label>
                                         <br/>
-                                        @foreach($nav_menu_id as $nav_menu_id)
-                                        <input type="checkbox" name="nav_menu_id[]" value="{{ $nav_menu_id -> nav_menu_id }}" {{ $nav_menu_id->ada > 0 ? 'checked' : ''}}><i class="dark-white"></i> {{  $nav_menu_id -> nav_header_name}} - {{ $nav_menu_id -> nav_menu_name }}<br/>
-                                        @endforeach
+                                        @foreach($nav_id as $nav_id)
+                                        <input type="checkbox" name="nav_id[]" value="{{ $nav_id -> nav_id }}"
+                                               {{ $nav_id->ada >0 ? 'checked' : '' }}  />
+                                                    <i class="dark-white"></i>
+                                                    {{  $nav_id -> nav_name}} - {{ $nav_id -> nav_name }}<br/>
+                                                @endforeach
                                         </div>
                                     </div>
                                 </div>
