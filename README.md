@@ -1,32 +1,23 @@
 <h3>This is AMOR Application - An Employee Monitoring Software. Created By Ibnu Rizal (Server setup, Database, Backend) and Taufan (Android Apps, API)</h3>
 <h5>Backend was built by using Laravel 8.25.0</h5>
   
-  
-  
-  <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+With AMOR, you can monitor your field employee from your laptop. AMOR is useful for:
+- Sales person
+- Cleaning services
+- Patrol team
+- Messenger
+- Canvassing activities
+- Installer/Technician
+- Other activities that need to be on the field
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+AMOR has two version: Mobile apps for field employee and Web-based for manager.
 
-## About Laravel
+AMOR's features:
+- Assign a task/visit schedule for field employee
+- Assign a region for employee
+- View real-time report from employee (location by Latitude-Longitude, Date reported, uploaded photo, notes)
+- Take an order from field (useful for Sales person when visiting an outlet and order your goods at the location)
+- Field employee must take a photo while reporting on the location (we restrict them to use photo from gallery)
+- Photo will be geo-tagging by AMOR then send to manager (taken location, taken date)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# AMOR
+With AMOR, Manager or Director will able to monitor their field employee without worried. Field employee cannot be cheating anymore about their location. All is validated using AMOR.
